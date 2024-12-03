@@ -127,7 +127,7 @@ def discrete_environment_image_representations_example():
     augmented_state_dict = env.get_augmented_state()
     next_state = augmented_state_dict["curr_state"]  # Underlying MDP state holds
     # the current discrete state.
-    print("sars', done, image shape =", state, action, reward, next_state, done, next_state_image.shape)
+    print("sars', done =", state, action, reward, next_state, done)
 
     env.close()
 
@@ -175,7 +175,7 @@ def discrete_environment_diameter_image_representations_example():
     augmented_state_dict = env.get_augmented_state()
     next_state = augmented_state_dict["curr_state"]  # Underlying MDP state holds
     # the current discrete state.
-    print("sars', done, shape =", state, action, reward, next_state, done, next_state_image.shape)
+    print("sars', done =", state, action, reward, next_state, done)
 
     env.close()
 
@@ -262,7 +262,7 @@ def continuous_environment_example_move_to_a_point_irrelevant_image():
     augmented_state_dict = env.get_augmented_state()
     next_state = augmented_state_dict["curr_state"].copy()  # Underlying MDP state holds
     # the current continuous state.
-    print("sars', done, image shape =", state, action, reward, next_state, done, next_state_image.shape)
+    print("sars', done =", state, action, reward, next_state, done)
 
     env.close()
 
@@ -324,8 +324,7 @@ def grid_environment_example():
     state = env.get_augmented_state()["augmented_state"][-1]
     actions = [[0, 1], [-1, 0], [-1, 0], [1, 0], [0.5, -0.5], [1, 2], [1, 1], [0, 1]]
 
-    for i in range(len(actions)):
-        action = actions[i]
+    for i in range(len(actions)): action = actions[i]
         next_obs, reward, done, trunc, info = env.step(action)
         next_state = env.get_augmented_state()["augmented_state"][-1]
         print("sars', done =", state, action, reward, next_state, done)
@@ -388,7 +387,7 @@ def grid_environment_image_representations_example():
         action = actions[i]
         next_obs, reward, done, trunc, info = env.step(action)
         next_state = env.get_augmented_state()["augmented_state"][-1]
-        print("sars', done, image shape =", state, action, reward, next_state, done, next_obs.shape)
+        print("sars', done =", state, action, reward, next_state, done)
         state = next_state
 
     env.reset()[0]
